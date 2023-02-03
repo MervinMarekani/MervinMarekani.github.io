@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fbd9ac2-2582-4b28-a969-7673dc075c0d" name="Changes" comment="Ice 2" />
+    <list default="true" id="9fbd9ac2-2582-4b28-a969-7673dc075c0d" name="Changes" comment="Ice 2 update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +44,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674165065235</updated>
       <workItem from="1674165066374" duration="3038000" />
-      <workItem from="1675458724837" duration="417000" />
+      <workItem from="1675458724837" duration="819000" />
     </task>
     <task id="LOCAL-00001" summary="Ice 2">
       <created>1675458759685</created>
@@ -67,7 +67,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675458796679</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Ice 2">
+      <created>1675459174371</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675459174371</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Ice 2 update">
+      <created>1675459397146</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675459397146</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -75,6 +89,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ice 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ice 2" />
+    <MESSAGE value="Ice 2 update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ice 2 update" />
   </component>
 </project>
