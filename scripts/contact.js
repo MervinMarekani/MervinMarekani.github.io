@@ -1,3 +1,5 @@
+
+(function (core){
 class Contact{
     constructor (fullName = "", contactNumber = "", emailAddress = ""){
         this.FullName = fullName;
@@ -30,7 +32,7 @@ class Contact{
     }
     toString(){
 
-        return 'Full Name: ${this.FullName}\n Contact Number: ${this.ContactNumber}\n EmailAddress: ${this.EmailAddress};'
+        return `Full Name: ${this.FullName}\n Contact Number: ${this.ContactNumber}\n EmailAddress: ${this.EmailAddress};`
     }
     serialize()
 {
@@ -55,3 +57,6 @@ this.ContactNumber = propertyArray[1];
 this.EmailAddress = propertyArray[2];
 }
 }
+
+core.Contact = Contact;
+})(core || (core = {}));

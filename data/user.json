@@ -1,0 +1,25 @@
+{
+  "user" : [
+    {
+      "DisplayName" : "Mike Smith",
+      "EmailAddress" : "mikesmith@domain.ca",
+      "Username" : "msmith",
+      "Password" : "111111"
+    },
+    {
+      "DisplayName" : "Georges Brown",
+      "EmailAddress" : "gbrown@domain.ca",
+      "Username" : "gbrown",
+      "Password" : "222222"
+    },
+    {
+      "DisplayName" : "Philippe Pelletier",
+      "EmailAddress" : "ppelletier@domain.ca",
+      "Username" : "ppelletier",
+      "Password" : "333333"
+
+    }
+
+  ]
+
+}

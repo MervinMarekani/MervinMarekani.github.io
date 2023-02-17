@@ -16,7 +16,29 @@
             localStorage.setItem(key, contact.serialize());
         }
     }
+    function AjaxRequest(method, url, callback){
+        let Xhr = new XMLHttpRequest();
 
+        Xhr.addEventListener("readystatechange", () => {
+
+            if(Xhr.readyState === 4 && Xhr.status === 200)
+            {
+                if(typeof callback === "function") {
+                    callback(Xhr.responseText);
+                }else{
+                    console.error("Error:callback is not a valid function.");
+                }
+            }
+
+        });
+
+        Xhr.open(method, url);
+        Xhr.send();
+    }
+    function LoadHeader(html_data){
+        $("header").html(html_data)
+        $(`li>a:contains(${document.title})`).addClass("active");
+    }
     function DisplayHomePage() {
         console.log("Home Page Called");
 
@@ -25,7 +47,7 @@
         });
 
         $("main").append(`<p id="Main Paragraph" class="mt-3" >This is the main paragraph</p>`);
-        $("body").append(`<article class="container"><p id= "ArticlePragraph" class="mt-3"> This is my article paragraph 
+        $("body").append(`<article class="container"><p id= "ArticleParagraph" class="mt-3"> This is my article paragraph 
          </p> </article>`)
 
     }
@@ -41,24 +63,60 @@
     }
     function DisplayAboutUsPage(){
         console.log("Contact Us Page")
+    }
 
-        let sendButton = document.getElementById("sendButton");
-        let subscribeCheckbox = document.getElementById("subscribeCheckbox");
 
-        sendButton.addEventListener("click", function(event)
-        {
-            if(subscribeCheckbox.checked){
-                let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value);
-                if(contact.serialize()){
-                    let key = contact.FullName.substring(0,1) + Date.now();
-                    locateStorage.setItem(key, contact.serialize());
-                }
+    /**
+     * This function will validate an input provided based on a given regular expression
+     * @param {String} input_field_id
+     * @param {RegEx} regular_expression
+     * @param {String} error_message
+     */
+    function validateField(input_field_id, regular_expression, error_message){
+
+        let messageArea = $("#messageArea");
+
+        $(input_field_id).on("blur", function () {
+
+            let fullNameText = $(this).val();
+            if(!regular_expression.test(fullNameText)){
+                //fail validation
+                $(this).trigger("focus").trigger("select");
+                messageArea.addClass("alert alert-danger").text(error_message).show();
+
+            }else{
+                //pass validation
+                messageArea.removeAttr("class").hide();
+
+
+
+
             }
+
         });
+
+    }
+
+    function ContactFormValidation(){
+
+        validateField("#fullName",
+            /^([A-Z][a-z]{1,3}\.?\s)?([A-Z][a-z]+)+([\s,-]([A-z][a-z]+))*$/,
+            "Please enter a valid first and last name (ex: John Doe" );
+
+        validateField("#contactNumber",
+            /^(\+\d{1,3}[\s-.])?\(?\d{3}\)?[\s-.]?\d{3}[\s-.]\d{4}$/,
+            "Please enter a valid phone number (ex: 416-111-1111" );
+
+        validateField("#emailAddress",
+            /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,10}$/,
+            "Please enter a valid email address (ex: john.doe@mail.com" );
 
     }
     function DisplayContactPage(){
         console.log("Contact Us Page")
+
+        ContactFormValidation();
+
 
         let sendButton = document.getElementById("sendButton");
         let subscribeCheckbox = document.getElementById("subscribeCheckbox");
@@ -139,6 +197,8 @@
     function DisplayEditPage(){
         console.log("Edit Page");
 
+        ContactFormValidation();
+
         let page = location.hash.substring(1);
         switch(page) {
             case "add":
@@ -202,8 +262,67 @@
 
         }
     }
+    function DisplayLoginPage(){
+        console.log("Login Page");
+
+        let messageArea = $("#messageArea");
+        messageArea.hide();
+
+        $("#loginButton").on("click", function(){
+            let success = false;
+            let newUser = new core.User();
+
+            $.get("./data/user.json", function(){
+                for(const u of data.user){
+                    if(username.value === u.Username && password.value === u.Password){
+                        success = true;
+                        newUser.fromJSON(user);
+                        break
+                    }
+                }
+
+                if (success){
+                    sessionStorage.setItem("user",newUser.serialize());
+                    messageArea.removeAttr("class").hide();
+
+                }else{
+                    //failed authentication
+                    $("#username").trigger("focus").trigger("select");
+                    messageArea.addClass("alert alert-danger")
+                        .text("Error:Invalid Credentials");
+                }
+            });
+            $("#cancelButton").on("click",function(){
+                document.form[0].reset();
+                location.href = "index.html";
+            });
+        });
+
+
+    }
+
+    function CheckLogin(){
+        if(sessionStorage.getItem("user")){
+            $("#login").html(`<a id="logout" class="nav-link" href="#">
+                                             <i class="fas fa-sign-out-alt"></i>Logout</a>`)
+        }
+        $("#logout").on("click", function(){
+
+            sessionStorage.clear();
+            location.href = "login.html";
+
+        })
+
+
+    }
+    function DisplayRegisterPage(){
+        console.log("Register Page");
+    }
     function Start(){
-        console.log("App Started!")
+        console.log("App Started!");
+
+        AjaxRequest("GET", "header.html", LoadHeader);
+
         switch(document.title)
         {
             case "Home":
@@ -226,6 +345,12 @@
                 break;
             case "Edit Contact":
                 DisplayEditPage();
+                break;
+            case "Login":
+                DisplayLoginPage();
+                break;
+            case "Register":
+                DisplayRegisterPage();
                 break;
 
         }
