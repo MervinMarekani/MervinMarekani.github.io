@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bae05e4d-a15d-499a-8d49-243b8e9f5b30" name="Changes" comment="Ice 5" />
+    <list default="true" id="bae05e4d-a15d-499a-8d49-243b8e9f5b30" name="Changes" comment="Ice 6">
+      <change beforePath="$PROJECT_DIR$/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/header.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,7 +48,7 @@
       <updated>1679695677771</updated>
       <workItem from="1679695678869" duration="665000" />
       <workItem from="1681502422920" duration="1197000" />
-      <workItem from="1683234178520" duration="1407000" />
+      <workItem from="1683234178520" duration="2276000" />
     </task>
     <task id="LOCAL-00001" summary="Ice 5">
       <created>1679695752825</created>
@@ -76,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683235046157</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Ice 6">
+      <created>1683235795667</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683235795667</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -84,6 +93,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ice 5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ice 5" />
+    <MESSAGE value="Ice 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ice 6" />
   </component>
 </project>
